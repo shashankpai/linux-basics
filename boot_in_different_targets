@@ -1,0 +1,98 @@
+### liat available targets on pur system
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl list-units --type=target
+Or
+systemctl -t help
+```
+</p>
+</details>
+
+### naviagate to /usr/lib/system/systemd directory (inside here are system config files these files are shipped with distribution)
+
+<details><summary>show</summary>
+<p>
+
+```bash
+vim sshd.service
+```
+</p>
+</details>
+
+### list dependencies 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl list-dependencies multi-user.target
+Or
+systemctl -t help
+```
+</p>
+</details>
+
+### list current target
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl get-default
+o/p:
+mutli-user.target 
+this means multiple users can log in and generally a command line interface if it was for graphical it will be graphical.target
+```
+</p>
+</details>
+
+### list dependencies for graphicsl.target 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl list-dependencies graphical.target | grep multi-user.target
+```
+</p>
+</details>
+
+### four targets you have your system on 
+
+<details><summary>show</summary>
+<p>
+
+```bash
+multi-user.target, graphical.target, emergency.target, rescue.target
+```
+</p>
+</details>
+
+### switching from one target to other
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl get-default (to get current target)
+systemctl isolate multi-user.target
+systemctl isolate graphical.target
+```
+</p>
+</details>
+
+### setting default target
+
+<details><summary>show</summary>
+<p>
+
+```bash
+systemctl set-default multi-user.target
+```
+</p>
+</details>
+
+
